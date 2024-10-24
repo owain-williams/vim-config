@@ -1,43 +1,42 @@
 return {
 	"catppuccin/nvim",
-	lazy = true,
+	lazy = false,
 	name = "catppuccin",
-	opts = {
-		integrations = {
-			aerial = true,
-			alpha = true,
-			cmp = true,
-			dashboard = true,
-			flash = true,
-			grug_far = true,
-			gitsigns = true,
-			headlines = true,
-			illuminate = true,
-			indent_blankline = { enabled = true },
-			leap = true,
-			lsp_trouble = true,
-			mason = true,
-			markdown = true,
-			mini = true,
-			native_lsp = {
-				enabled = true,
-				underlines = {
-					errors = { "undercurl" },
-					hints = { "undercurl" },
-					warnings = { "undercurl" },
-					information = { "undercurl" },
+	priority = 1000,
+	config = function()
+		require("catppuccin").setup({
+			flavor = "mocha",
+			integrations = {
+				cmp = true,
+				alpha = true,
+				mason = true,
+				neotree = true,
+				native_lsp = {
+					enabled = true,
+					virtual_text = {
+						errors = { "italic" },
+						hints = { "italic" },
+						warnings = { "italic" },
+						information = { "italic" },
+						ok = { "italic" },
+					},
+					underlines = {
+						errors = { "underline" },
+						hints = { "underline" },
+						warnings = { "underline" },
+						information = { "underline" },
+						ok = { "underline" },
+					},
+					inlay_hints = {
+						background = true,
+					},
+				},
+				treesitter = true,
+				telescope = {
+					enabled = true,
 				},
 			},
-			navic = { enabled = true, custom_bg = "lualine" },
-			neotest = true,
-			neotree = true,
-			noice = true,
-			notify = true,
-			semantic_tokens = true,
-			telescope = true,
-			treesitter = true,
-			treesitter_context = true,
-			which_key = true,
-		},
-	},
+		})
+		vim.cmd.colorscheme("catppuccin")
+	end,
 }
